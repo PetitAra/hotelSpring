@@ -1,0 +1,77 @@
+package com.m2i.hotel.entities;
+
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name = "client", schema = "hotel", catalog = "")
+public class ClientEntity {
+    private int id;
+    private String nomComplet;
+    private int telephone;
+    private String email;
+    private String adresse;
+
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "nom_complet")
+    public String getNomComplet() {
+        return nomComplet;
+    }
+
+    public void setNomComplet(String nomComplet) {
+        this.nomComplet = nomComplet;
+    }
+
+    @Basic
+    @Column(name = "telephone")
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
+    @Column(name = "adresse")
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientEntity that = (ClientEntity) o;
+        return id == that.id && telephone == that.telephone && Objects.equals(nomComplet, that.nomComplet) && Objects.equals(email, that.email) && Objects.equals(adresse, that.adresse);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nomComplet, telephone, email, adresse);
+    }
+}
