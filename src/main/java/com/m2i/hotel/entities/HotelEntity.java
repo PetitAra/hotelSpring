@@ -92,6 +92,7 @@ public class HotelEntity {
         return id == that.id && etoiles == that.etoiles && telephone == that.telephone && Objects.equals(nom, that.nom) && Objects.equals(adresse, that.adresse) && Objects.equals(email, that.email) && Objects.equals(ville, that.ville);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(id, nom, etoiles, adresse, telephone, email, ville);
