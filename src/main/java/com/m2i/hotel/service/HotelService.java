@@ -55,7 +55,7 @@ public class HotelService {
             throw new InvalidObjectException("Ville invalide");
         }
         if(h.getEtoiles()<1 || h.getEtoiles()>5){
-            throw new InvalidObjectException("Nombre des etoiles entre 0 et 5");
+            throw new InvalidObjectException("Nombre des etoiles entre 1 et 5");
         }
 
     }

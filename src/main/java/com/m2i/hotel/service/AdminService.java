@@ -26,6 +26,11 @@ public class AdminService {
     }
 
     public void addAdmin(AdminEntity a) {
+
+        ar.save(a);
+        if( a.getPhotouser().length() == 0)
+            a.setPhotouser( "default.jpg" );
+
         ar.save(a);
     }
 
@@ -39,6 +44,28 @@ public class AdminService {
 
             ar.save(aExistant);}
         catch (NoSuchElementException e){
+            throw e;
+        }
+    }
+
+    public void editProfil( int id , AdminEntity a) throws NoSuchElementException {
+        try{
+            AdminEntity aExistant = ar.findById(id).get();
+
+            aExistant.setUsername( a.getUsername() );
+
+            System.out.println( "------------------" );
+            System.out.println( a.getPhotouser() );
+            System.out.println( "*************" );
+
+            if( a.getPhotouser() == null )
+                aExistant.setPhotouser( "default.jpg" );
+            else
+                aExistant.setPhotouser( a.getPhotouser() );
+
+            ar.save( aExistant );
+
+        }catch ( NoSuchElementException e ){
             throw e;
         }
     }
